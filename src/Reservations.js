@@ -43,7 +43,7 @@ const StyledBigCalendar = styled(BigCalendar)`
   flex-grow: 1;
   padding: 10px 0;
   /* height: 100vh; */
-  min-height: 200vh;
+  min-height: 450vh;
   height: auto;
   
   & .rbc-time-content {
@@ -102,17 +102,6 @@ const StyledBigCalendar = styled(BigCalendar)`
   }
 `
 
-const StyledFloatRight = styled.div`
-  display: flex;
-  align-items: center;
-`
-
-const StyledLabel = styled.div`
-  margin: 0 5px;
-  font-size: 16px;
-  font-weight: normal;
-`
-
 const formats = {
   timeGutterFormat: 'HH:mm',
   eventTimeRangeFormat: (event, culture, local) => 
@@ -134,7 +123,7 @@ class Reservation extends Component {
     setInterval(() => this.forceUpdate(), 1000)
 
     let id = 0
-    for (let i = 0; i < 1600; i++) {
+    for (let i = 0; i < 1000;) {
       // const now = Date.now() + (id * 1800000)
       const now = Number(moment().startOf('month').format('x')) + (id * 1800000)
       const nowMoment = moment(now)
@@ -148,6 +137,7 @@ class Reservation extends Component {
               end: new Date(now + 1800000)
             }]
         }))
+        i++
       } else id += 2
       id++
     }
